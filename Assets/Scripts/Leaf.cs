@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Leaf
 {
-    private int xpos;
-    private int zpos;
-    private int width;
-    private int depth;
+    public int xpos;
+    public int zpos;
+    public int width;
+    public int depth;
     private int scale;
     private int roomMin = 5;
 
@@ -60,7 +60,7 @@ public class Leaf
 
     public void Draw(byte[,] map)
     {
-        Color c = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
+        /*Color c = new Color(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f));
         for (int x = xpos; x < width + xpos; x++)
         {
             for (int z = zpos; z < depth + zpos; z++)
@@ -70,11 +70,13 @@ public class Leaf
                 cube.transform.localScale = new Vector3(scale, scale, scale);
                 cube.GetComponent<Renderer>().material.SetColor("_Color", c);
             }
-        }
+        }*/
 
-        for (int x = xpos + 1; x < width + xpos - 1; x++)
+        //Rooms being carved
+        int wallSize = Random.Range(1, 3);
+        for (int x = xpos + wallSize; x < width + xpos - wallSize; x++)
         {
-            for (int z = zpos + 1; z < depth + zpos - 1; z++)
+            for (int z = zpos + wallSize; z < depth + zpos - wallSize; z++)
             {
                 map[x, z] = 0;
             }
